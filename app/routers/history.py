@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import APIRouter, Query, Depends
 
 from app.db import get_db
@@ -9,7 +11,7 @@ from sqlalchemy.future import select
 history_router = APIRouter(prefix="/history")
 
 
-@history_router.get("/{chat_id}", response_model=[MessageRead])
+@history_router.get("/{chat_id}", response_model=List[MessageRead])
 async def get_history(
     chat_id: int,
     limit: int = Query(20, ge=1, le=100),

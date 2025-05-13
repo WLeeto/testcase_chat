@@ -60,3 +60,5 @@ class Message(Base):
     text = Column(Text, nullable=False)
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
     is_read = Column(Boolean, default=False)
+
+    sender = relationship("User", back_populates="messages")
