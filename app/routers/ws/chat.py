@@ -20,6 +20,9 @@ async def chat_ws(
     user_id: int,
     db: AsyncSession = Depends(get_db),
 ):
+    """
+    Принять сообщение и раздать его всем в чате.
+    """
     await websocket.accept()
     if chat_id not in active_connections:
         active_connections[chat_id] = []
